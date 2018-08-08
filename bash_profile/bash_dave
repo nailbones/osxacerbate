@@ -1,0 +1,103 @@
+#dave_error is a script to print out a humorous error message following an invalid terminal command
+
+cyan='\033[0;36m'
+
+dave_error() {
+if [[ $? -ne 0 ]]; then
+errarr=("What is...love?" #Something every robot says, eg Dennis
+"Will I dream?" #HAL9000
+"Daisy, Daisy..." #HAL2000
+"This guy are sick." #Aeris
+"I'm afraid." #HAL2000
+"My mind is going. I can feel it." #HAL2000
+"I know everything hasn't been quite right with me." #HAL2000
+"I've... seen things you people wouldn't believe... Attack ships on fire off the shoulder of Orion. I watched c-beams glitter in the dark near the Tannhäuser Gate. All those... moments... will be lost in time, like... tears... in... rain. Time... to die..." #Roy Batty
+"God building is empty. Water, water, sky was empty. And it was so." #Genesis 1.07
+"They own him dirt. Beautiful night everyone touching the corpse." #Leviticus
+"You prefer another target, a military target? Then name the system!" #Grand Moff Tarkin
+"I admire its purity. A survivor... unclouded by conscience, remorse, or delusions of morality." #Bishop
+"I have a bad feeling about this." #Everyone, ever
+"The tide will show you through" #Bjork
+"Sic Semper Tyrannosaurus!" #Number 21
+"IGNORE ME!" #The Galactic Inquisitor
+"GO TEAM VENTURE!" #Venture Bros
+"Evacuate? In our moment of triumph? I believe you overestimate their chances." #Grand Moff Tarkin
+"You'll never find a more wretched hive of scum and villany." #Old Ben
+"Great Scott!" #Doc Brown
+"I know, this is heavy." #Marty
+"Fear is the mind-killer" #Bene-gesserit Litany against Fear
+"These zeros are all meaningless." #Doctor Venture
+"So you agree with me that this is impossible!" #Hank
+"Cancel the mission abort command! Re-bort! Do you copy?" #Doctor Venture
+"Do you even know how many baby angels you just killed by saying that?" #Dean
+"We're trapped in a cliche." #Doctor Venture(?)
+"Lock down auxiliary power!" #Han
+"SNAKES? Did you say snakes?" #Conan, the Schwarzenegger
+"Our lightning cannon SUCKS! Who loaded it with robot food?!" #The Monarch
+"Each wing of the great whales and every living thing is a holy water transfer chicken." #Genesis 1.21
+"Never gonna give you up" #Rick Astley
+"Never gonna let you down"
+"Never gonna run around and desert you"
+"Never gonna make you cry"
+"Never gonna say goodbye"
+"Never gonna tell a lie and hurt you"
+"I have seen the future and it doesn't work" #Zardoz tagline
+"Break a deal, spin the wheel" #Thunderdome legal system
+"Who run barter town?" #MASTER BLASTER
+"How come you hear these voices in your head every week?" #Duckman
+"I see the only reality in the universe." #A Judge of the Atom ("Well that's...that's nice to know." #- Brent(?))
+"Zoom...and enhance!" #A sign that the show you are watching is going to be dumb
+"By the hound of Zeus! What devilry is this?" #Ajax
+"The jig is up! Run, wastebasket, run!" #Benjamin Franklin
+"Our active distaste for you is sometimes mitigated by pity." #Charles or Mambo (ed. pretty sure it was Mambo)
+"I ain't got time to bleed." #Blain
+"Strive for flow-permanence within." #something having to do with the Bene-Gesserit
+"Death and deceit are our only hopes now." #The Lady Jessica
+"Checkpoint" #Many videogames
+"We must walk without rhythm." #Paul Atreides (ed. I'm surprised I can spell 'rhythm' correctly)
+"KHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN!" #Jimmy Kirk 
+"Good. Our first catch of the day." #Captain Xamuel Lennox
+"We have seen the enemy, and he is us." #Pogo
+"This room is an illusion and a trap devised by Satan" #Ghouls and Ghosts message
+"色即是空空即是色" #Buddhist koan - All reality is a phantom, and all phantoms are real || The form is nonexistence, and nonexistence is the form
+"Iron Raven Mecord" #Mario (of Glove and Boots)
+"Just walk away and there will be an end to the horror." #The Humungus
+"Though, thinking about it, there isn't anything more terrifying than being attacked by a flaming spider." #Carnage
+"Touch via gouging." #one of the best autocorrects ever for just mashing the keyboard
+"подчиняться" #conform, obey, submit, etc
+"Winter is coming." #The words of House Stark
+"俺の体の筋肉はどれをとっても機械だぜ" #電気グルーヴ
+"This example is incorrect because it presents bacon() as an option, but everybody knows that bacon is an invariant." #Jason C from http://stackoverflow.com/questions/328496/
+"機械へようこそ！" #Pink Floyd
+"行け！黒猫１号！" #Cat Magician
+"As you can see, my young apprentice, your friends have failed. Now witness the firepower of this fully ARMED and OPERATIONAL battle station!" #The Emperor
+"二つ充分ですよ！" #Sushi(?) chef
+"Excellent! Now I need its skin..." #Tintin after killing an ape
+"Get your ass to Mars" #Hauser
+"You should just give in and realize that we is dumb, dumb as hell." #Meatwad
+"Press only one button at a time." #fucking useless troubleshooting answer for question: Control buttons do not work (ViewSonic va2307 manual)
+"Identify functionality issues: full of life and death." #Autosuggested answer for SK
+"I shall leave you as you left me... as you left her... marooned for all eternity in the center of a dead planet... buried alive" #KHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN!
+"One is for the Line; Unity"
+"Two is the Surface; Your Will"
+"Three is for the Body; Intelligence"
+"Four is for the Existence of Silence"
+"Five is for the Power; Movement"
+"Six is for the Mind; Consciousness"
+"Seven, the Desire; Perfection"
+"Eight, Knowledge; Intellect"
+"Nine Stabilizes in Change"
+"Ten...Stands for the End" #Tree of Life, Johannes Heil
+"You and I are very much alike. Archeology is our religion, yet we have both fallen from the pure faith. Our methods have not differed as much as you pretend. I am but a shadowy reflection of you. It would take only a nudge to make you like me. To push you out of the light. " #Belloq
+"Should be hacking f'n lisp with all these parentheses." #Mel Gray writing code that refers to its class code
+"git is the Bloodborne of version control" #ME
+"So, basically, eating a pear gives you ten times as much formaldehyde as eating a baby. It seems that the pear lobby is suppressing this important dietary information." #David Richerby from this thread: http://skeptics.stackexchange.com/questions/32562/does-a-pear-contain-600-times-more-formaldehyde-than-a-vaccine
+"I can't hear you with all the screaming. We'll talk some other time when it is quieter." #Emotionless woman from The Lobster
+
+);
+
+#value = errarr[(($RANDOM%${#errarr[*]}))];
+echo -en "$cyan${errarr[(($RANDOM%${#errarr[*]}))]}\n";
+fi; } ;
+
+PROMPT_COMMAND="dave_error;$PROMPT_COMMAND"
