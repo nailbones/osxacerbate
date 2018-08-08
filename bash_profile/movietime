@@ -1,0 +1,44 @@
+#random file from current directory
+#recursive through directories, specify file type
+#thanks chris
+
+#gimmie [filepath] [comma-delimited filetypes]
+gimmie() {
+    local MYFILES MYFILECOUNT NEWINPUT
+        NEWINPUT=$(sed 's/,/|/g' <<<$2)
+    MYFILES=$(find -E ${1:-\.} -regex ".*($NEWINPUT)" -type f)
+    if [[ -z $MYFILES ]]; then
+        echo No matches
+        return
+    fi
+    MYFILECOUNT=$(wc -l <<< "$(echo "$MYFILES")")
+    open "$(echo "$MYFILES" | head -n$(( 1 + $(( RANDOM % $MYFILECOUNT )))) | tail -n1)"
+}
+
+#selects a random move.
+#movietime [dir]
+movietime() {
+
+    local MYFILES MYFILECOUNT OUTPUT
+    MYFILES=$(find -E ${1:-\.} -regex ".*(mov|mpg|mp4|wmv|avi|flv|mpeg|mkv)" -type f)
+    if [[ -z $MYFILES ]]; then
+        echo No matches
+        return
+    fi
+    MYFILECOUNT=$(wc -l <<< "$(echo "$MYFILES")")
+    OUTPUT=$(echo "$MYFILES" | head -n$(( 1 + $(( RANDOM % $MYFILECOUNT )))) | tail -n1)
+echo $OUTPUT
+	NEWINPUT=$(sed 's/\ /\\ /g' <<<$OUTPUT)
+echo $NEWINPUT
+    open "$OUTPUT"
+}
+
+manyMovie() {
+for i in {1..10}
+do
+ #movietime
+echo "did $i"
+movietime
+done
+}
+
