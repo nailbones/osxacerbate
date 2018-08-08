@@ -1,0 +1,67 @@
+# git autocomplete
+# source ~/.git-completion.bash
+
+#colors
+RED="\[\033[0;31m\]"
+GREEN="\[\033[0;32m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+MAGENTA="\[\033[0;35m\]"
+CYAN="\[\033[0;36m\]"
+NO_COLOR="\[\033[0m\]"
+export PS1="$MAGENTA\w⚡$NO_COLOR "
+
+#locale
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+#color macros
+alias lsg="ls -G -a -lh"
+alias lsa="lsg"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias grepr="grep -r"
+alias gerp="grepr -In"
+alias gerpy="gerp -i"
+
+alias derp="gerp "$1" *"
+alias derpy="gerpy "$1" *"
+
+#sripts
+#one-line bashprofile open and source
+alias bashprofile="vim $HOME/.bash_profile && . $HOME/.bash_profile && echo 'Bash profile updated and changes applied'"
+alias sourcebash="source $HOME/.bash_profile"
+
+#I can't do that Dave
+alias dave="vim $HOME/.bashes/bash_dave && . $HOME/.bashes/bash_dave && echo 'I HAVE THE POWER!'"
+if [ -f ~/.bashes/bash_dave ]; then . ~/.bashes/bash_dave; fi
+
+alias adventure="emacs -batch -l dunnet"
+
+#ffmpeg
+concatVids() { ffmpeg -i $1 -i $2 -filter_complex '[0:v] [0:a:0] [1:v] [1:a:0] concat=n=2:v=1:a=1 [v] [a]' -map '[v]' -map '[a]' $3 ; }
+extractToMP3() { ffmpeg -i $1 -ab 160k -ac 2 -ar 44100 $2 ; }
+extractAudio() { ffmpeg -i $1 -ac 2 -ar 44100 $2 ; }
+
+#git completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+   echo "things?" ;
+   . $(brew --prefix)/etc/bash_completion
+fi
+
+#taking an input file, extract * between everything...
+#sed -e 's/.*\everythingbeforethis\(.*\)\everythingafter.*/\1/' test.xml >> text.txt
+
+#awesome things
+
+#finds any file recursively that matches the input
+findy() { find * -iname *"$@"* -type f; }
+
+#right now you'll notice this only works in .h and .cpp files.  replaces occurences of $1 with $2
+replace() { find * \( -iname *.h -o -iname *.cpp \) -exec sed -i -e "s/"$1"/"$2"/g" '{}' ';' ;}
+
+#automaticall display a osx notification. requires terminal-notifier app
+notify() { $HOME/Documents/terminal-notifier/1.6.2/terminal-notifier.app/Contents/MacOS/./terminal-notifier -title "$1" -messag    e "$2";}
+
+export PATH="/usr/local/sbin:$PATH"
+
